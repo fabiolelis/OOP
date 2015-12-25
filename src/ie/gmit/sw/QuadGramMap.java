@@ -5,7 +5,6 @@ package ie.gmit.sw;
  * Represents the 4gram.txt in a ConcurrentHashMap 
  */
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

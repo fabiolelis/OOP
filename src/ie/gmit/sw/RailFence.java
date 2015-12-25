@@ -81,8 +81,6 @@ public class RailFence {
 		
 		file.close();
 		
-		
-		
 
 	}
 }

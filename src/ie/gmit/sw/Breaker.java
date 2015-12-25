@@ -2,7 +2,8 @@ package ie.gmit.sw;
 
 /*
  * Breaker class.
- * runs a set of decrypters threads and put the results in a blocking queue 
+ * runs a set of decrypters threads and put the results in a blocking queue
+ * runs a consumer taker that give back the maximum score
  */
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -31,8 +32,6 @@ public class Breaker {
 	
 	public Result breakit(){
 		
-		//double maxScore = 0;
-		//Result maxResult = new Result();
 		ExecutorService breakerExecutor = Executors.newFixedThreadPool(this.poolSize);
 		ExecutorService takerExecutor = Executors.newFixedThreadPool(1);
 
@@ -43,9 +42,7 @@ public class Breaker {
 			Runnable worker = new Decrypter(i);
 			breakerExecutor.execute(worker);
 		}
-		
 
-			
 		breakerExecutor.shutdown();
 		poison = true;
 		
