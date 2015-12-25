@@ -2,9 +2,9 @@
 <!-- ===================================================================================
      GALWAY-MAYO INSTITUTE OF TECHNOLOGY 
      
-     Copyright 2015. 		<Your Name>
+     Copyright 2015. 		Fabio Lelis
      						B.Sc. in Software Development
-							<your id>@gmit.ie
+							G00330441@gmit.ie
      						Object-Oriented Programming
      						
      						A Multi-threaded Cypher Breaker
@@ -19,7 +19,7 @@
 	<!-- Declare global properties (name/value pairs) for this build -->
 
 	
-	<property name="user.name" value="Your ID"/>
+	<property name="user.name" value="G00330441"/>
 	
 	<property name="org.name" value="Galway-Mayo Institute of Technology"/>
 	<property name="app.name" value="A Multi-threaded Cypher Breaker"/>
@@ -29,7 +29,7 @@
 	<property name="srcDir" value="./src/"/>
 	<property name="distDir" value="./dist"/>
 	<property name="docDir" value="${distDir}/docs"/>
-
+	
 	<path id="classpath">
     	<pathelement location="." />
   	</path>
@@ -75,7 +75,7 @@
 	<target name="archive" depends="compile">
         <jar destfile="${distDir}/railfence.jar" basedir="${distDir}" excludes="**/*Test.class, **/Compact*.class">         
         	 <manifest>
-        	 	<attribute name="Main-Class" value="ie.gmit.sw.Runner"/>
+        	 	<attribute name="Main-Class" value="ie.gmit.sw.RailFence"/>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Implementation-Vendor" value="${org.name}"/>
 				<attribute name="Implementation-Title" value="${app.name}"/>
