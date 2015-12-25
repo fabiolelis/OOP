@@ -1,3 +1,4 @@
+//Created by Fabio Lelis
 package ie.gmit.sw;
 
 /*
@@ -32,6 +33,8 @@ public class Breaker {
 	
 	public Result breakit(){
 		
+		//build and run the threads consumer and producer
+		
 		ExecutorService breakerExecutor = Executors.newFixedThreadPool(this.poolSize);
 		ExecutorService takerExecutor = Executors.newFixedThreadPool(1);
 
@@ -43,11 +46,12 @@ public class Breaker {
 			breakerExecutor.execute(worker);
 		}
 
+		//producing is done, finish consumer
 		breakerExecutor.shutdown();
 		poison = true;
-		
 		takerExecutor.shutdown();
 		
+		//return the best score found by the consumer
 		return ((Taker)taker).getMaxResult();		
 		
 	}
@@ -64,8 +68,9 @@ public class Breaker {
 				Result r;
 				try {
 					r = resultsQueue.take();
-					System.out.println("tookkey " + r.getKey());
+					//System.out.println("tookkey " + r.getKey());
 
+					//keep the result if it has the best score so far
 					if(r.getScore() > maxScore){
 						maxResult = r;
 						maxScore = r.getScore();
@@ -97,7 +102,7 @@ public class Breaker {
 			TextScorer ts = new TextScorer(Breaker.qgmap.getContent());
 			
 			try {
-				System.out.println("putkey " + key);
+				//System.out.println("putkey " + key);
 				resultsQueue.put(new Result(key, text, ts.getScore(text)));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

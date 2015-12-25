@@ -1,3 +1,5 @@
+//Modified by Fabio Lelis
+
 package ie.gmit.sw;
 
 import java.util.Scanner;
@@ -62,18 +64,23 @@ public class RailFence {
 		
 	public static void main(String[] args) throws Exception{
 		
+		
+		//ask for a filename and store the text in a string
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Filename: ");
-
-		String filename = "inputfile.txt";//sc.nextLine();
+		String filename = sc.nextLine();
 		FileInterface file = new TextFile(filename);
 		file.open();
 		file.read();
 		
-		
+		//show the read text
 		String text = file.getFileContent();
 		System.out.println("Encrypted text >" + text);
 		
+		//try to break the text with different keys 
+		//and for each one gets its score
+		//this score means how possible is that this decoded text is in English
+		//the result with the best score is printed
 		Breaker breaker = new Breaker(text);
 		Result dec = breaker.breakit();
 		System.out.println("Decrypted text >" + dec.toString());

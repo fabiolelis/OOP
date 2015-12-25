@@ -1,3 +1,5 @@
+//Created by Fabio Lelis
+
 package ie.gmit.sw;
 
 /*
@@ -24,10 +26,11 @@ public class Result {
 	
 	@Override
 	public String toString(){
-		return "Result {"+
-				"\nkey: "+ key +
-				"\ntext: "+ text +
-				"\nscore: " + score;
+		return "\nResult {"+
+				"\n\tkey: "+ key +
+				"\n\ttext: "+ text +
+				"\n\tscore: " + score +
+				"\n}";
 	}
 	
 	
